@@ -9,7 +9,7 @@ function makePrompter() {
 				message: 'Auto add `(changelog-needed)` to subject line?\n',
 			},
 		]).then((answer) => {
-			let customQuestion = [
+			const customQuestion = [
 				{
 					type: 'input',
 					name: 'subject',
@@ -30,5 +30,5 @@ function makePrompter() {
 
 module.exports = {
 	prompter: makePrompter(),
-	makePrompter: makePrompter,
+	makePrompter,
 }

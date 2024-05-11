@@ -4,7 +4,7 @@ const path = require('path')
 const colors = require('colors')
 const { Command } = require('commander')
 const { Select } = require('enquirer')
-import { frameworks } from './framework-config.cjs'
+const { frameworks } = require('./framework-config.cjs')
 
 class Core {
 	constructor() {
@@ -68,7 +68,7 @@ class Core {
 					resolve()
 				})
 			} else {
-				reject()
+				reject(new Error('no packages'))
 			}
 		})
 	}
@@ -79,7 +79,7 @@ class Core {
 	 */
 	async selectPackage() {
 		return new Promise((resolve, reject) => {
-			let packages = JSON.parse(JSON.stringify(this._packageArray))
+			const packages = JSON.parse(JSON.stringify(this._packageArray))
 			// 参数携带package
 			if (this._argumentArray[1] && this._packageArray.includes(this._argumentArray[1])) {
 				this._package = this._argumentArray[1]

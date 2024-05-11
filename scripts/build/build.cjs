@@ -3,7 +3,7 @@ const { spawn } = require('child_process')
 const core = require('./core.cjs')
 const { getFrameworkConfig } = require('./framework-config.cjs')
 
-class buildCore extends core {
+class BuildCore extends core {
 	constructor(optionArray = []) {
 		super()
 		this.initOption(optionArray)
@@ -70,7 +70,7 @@ class buildCore extends core {
 	}
 }
 
-new buildCore([
+const buildCore = new BuildCore([
 	{
 		short: '-b',
 		long: '--build',
@@ -87,3 +87,7 @@ new buildCore([
 		description: 'generate package',
 	},
 ])
+
+module.exports = {
+	buildCore,
+}

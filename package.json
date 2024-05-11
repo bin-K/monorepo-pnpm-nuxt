@@ -11,6 +11,7 @@
 		"generate": "node scripts/build/build.cjs -g",
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"prepare": "husky",
+		"lint:script": "eslint --ext .js,.jsx,.vue,.ts,.tsx --fix ./",
 		"lint-staged": "lint-staged"
 	},
 	"keywords": [],
@@ -65,8 +66,9 @@
 		}
 	},
 	"lint-staged": {
-		"**/*.{js,jsx,ts,tsx,vue}": [
-			"eslint --ext .js,.jsx,.vue,.ts,.tsx  --fix  ./"
+		"**/*.{js,jsx,cjs,ts,tsx,vue}": [
+			"eslint --ext .js,.jsx,.cjs,.vue,.ts,.tsx  --fix ./",
+			"git add ."
 		]
 	},
 	"workspaces": [
